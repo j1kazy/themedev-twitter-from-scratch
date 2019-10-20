@@ -1,0 +1,21 @@
+@startuml
+
+left to right direction
+
+usecase 新規登録
+actor ユーザ
+boundary 登録画面
+boundary 完了画面
+control エラーチェック
+control ユーザ登録
+entity ユーザ情報
+
+
+ユーザ --> 登録画面
+登録画面 --> エラーチェック : 新規追加ボタン
+エラーチェック --> 登録画面 : NG
+エラーチェック --> ユーザ登録 : OK
+ユーザ登録 -- ユーザ情報
+ユーザ登録 --> 完了画面
+
+@enduml

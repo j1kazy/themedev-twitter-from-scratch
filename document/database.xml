@@ -59,9 +59,6 @@
 <row name="created" null="0" autoincrement="0">
 <datatype>DATETIME</datatype>
 <default>'NOW'</default></row>
-<row name="updated" null="0" autoincrement="0">
-<datatype>DATETIME</datatype>
-<default>'NOW'</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -87,9 +84,6 @@
 <datatype>VARCHAR</datatype>
 </row>
 <row name="created" null="0" autoincrement="0">
-<datatype>DATETIME</datatype>
-<default>'NOW'</default></row>
-<row name="updated" null="0" autoincrement="0">
 <datatype>DATETIME</datatype>
 <default>'NOW'</default></row>
 <key type="PRIMARY" name="">
@@ -121,14 +115,11 @@
 <row name="created" null="0" autoincrement="0">
 <datatype>DATETIME</datatype>
 <default>'NOW'</default></row>
-<row name="updated" null="0" autoincrement="0">
-<datatype>DATETIME</datatype>
-</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="623" y="29" name="like">
+<table x="623" y="29" name="likes">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -144,12 +135,6 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="comments" row="id" />
 </row>
-<row name="created" null="0" autoincrement="0">
-<datatype>DATETIME</datatype>
-<default>'NOW'</default></row>
-<row name="updated" null="0" autoincrement="0">
-<datatype>DATETIME</datatype>
-<default>'NOW'</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
