@@ -28,7 +28,7 @@ if(empty($password)){
 }
 
 // ユーザーがすでにDBに存在している場合はtrue
-if(isUserExitst($login_id)){
+if($isError == false && isUserExitst($login_id)){
     $isError = true;
     print 'すでに登録されているユーザーIDです。<br />';
 }
