@@ -18,7 +18,7 @@ function isUserExitst($login_id)
     try{
         $dbh = getDbh();
 
-        $sql = 'select * from users where login_id=?';
+        $sql = 'SELECT COUNT(*) FROM users WHERE login_id=?';
         $stmt = $dbh->prepare($sql);
         $data[] = $login_id;
         $stmt->execute($data);
