@@ -1,7 +1,7 @@
-<?php require_once('../common/header.php') ?>
+<?php require_once(__DIR__ . '/../common/header.php') ?>
 
 <?php
-require_once('../common/common.php');
+require_once(__DIR__ . '/../common/common.php');
 
 $isError = false;
 
@@ -55,4 +55,4 @@ if($isError){
 ?>
 
 
-<?php require_once('../common/footer.php') ?>
+<?php require_once(__DIR__ . '/../common/footer.php') ?>

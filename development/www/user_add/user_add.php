@@ -1,4 +1,4 @@
-<?php require_once('../common/header.php') ?>
+<?php require_once(__DIR__ . '/../common/header.php') ?>
 
 新規登録<br />
 <br />
@@ -15,4 +15,4 @@
 
 
 
-<?php require_once('../common/footer.php') ?>
+<?php require_once(__DIR__ . '/../common/footer.php') ?>

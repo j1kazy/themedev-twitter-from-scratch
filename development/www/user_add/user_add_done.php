@@ -1,8 +1,10 @@
-<?php require_once('../common/header.php') ?>
+<?php require_once(__DIR__ . '/../common/header.php') ?>
 
 <?php
 
-require_once('../common/common.php');
+// TODO: このページで再読み込みすると、同じデータがDBに入ってしまう。
+
+require_once(__DIR__ . '/../common/common.php');
 
 $login_id = htmlspecialchars($_POST['login_id']);
 $password = htmlspecialchars($_POST['pass']);
@@ -26,6 +28,8 @@ try{
     print $login_id;
     print 'さんを追加しました。<br />';
 
+    // TODO: 追加したと同時にログインしたい
+
 }catch(Exception $e){
     print 'ただいま障害により大変ご迷惑をおかけしております。';
     print '<br /><br />';
@@ -38,6 +42,6 @@ try{
 ?>
 
 トップ？プロフィール画面へ
-<a href="index.html">戻る</a>
+<a href="<?php print URL . '/index.php' ?>">戻る</a>
 
-<?php require_once('../common/footer.php') ?>
+<?php require_once(__DIR__ . '/../common/footer.php') ?>
