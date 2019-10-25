@@ -6,6 +6,7 @@
 </div>
 <br />
 <form>
+<!-- TODO: history.backじゃなくURL指定でいいかも-->
 <input type="button" onclick="history.back()" value="戻る">
 </form>
 <a href="./profile_edit.php"?>プロフィール編集</a>
@@ -16,7 +17,7 @@
 
 <?php
 $user = getUserData($_SESSION['login_id']);
-$disp_image = getDispImage($user['image']);
+$disp_image = getDispImageTag($user['image']);
 
 print '名前：' . $user['name'] . '<br />';
 print '画像：'. $disp_image .'<br />';

@@ -4,7 +4,7 @@
 
 $user = getUserData($_SESSION['login_id']);
 $image_old = $user['image'];
-$disp_image = getDispImage($image_old);
+$disp_image = getDispImageTag($image_old);
 ?>
 
 <div class="header">

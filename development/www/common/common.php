@@ -76,7 +76,7 @@ function addSuffix($fileName, $suffix)
 
 
 // ファイルパスで表示タグを組み立てる。プロフィール用
-function getDispImage($imagePath)
+function getDispImageTag($imagePath)
 {
     if($imagePath == ''){
         $disp_image = '';
