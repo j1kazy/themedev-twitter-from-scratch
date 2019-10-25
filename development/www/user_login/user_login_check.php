@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../common/common.php');
 // サニタイズ
 $login_id = htmlspecialchars($_POST['login_id']);
 $password = htmlspecialchars($_POST['pass']);
-$password = md5($password);
+$password = md5(SALT . $password);
 
 try{
     $dbh = getDbh();

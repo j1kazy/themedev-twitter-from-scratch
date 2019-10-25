@@ -18,16 +18,16 @@ if($name == ''){
     print '<br />';
 }
 
-// 画像をバリデーション
+// 画像をバリデーション と画像の保存
 // TODO:サイズのみでバリデーション。ファイルの種類を考慮する必要がある
-// TODO:ファイル名もかぶる可能性があるので、タイムスタンプなどで一意性を。
 if($image['size'] > 0)
 {
     if($image['size'] > 1000000){
         print '画像が大きすぎます。';
     }else{
         // 画像の保存
-        $fullPath = './gazou/'.$image['name'];
+        $uniqFileName = getUniqFileName($image['name']);
+        $fullPath = './gazou/'.$uniqFileName;
         move_uploaded_file($image['tmp_name'], $fullPath);
 
         // 画像のサムネイル化
@@ -48,7 +48,7 @@ if($name == "" || $image['size'] > 1000000){
     print '<input type="hidden" name="name" value="'.$name.'">';
     print '<input type="hidden" name="profile" value="'.$profile.'">';
     print '<input type="hidden" name="image_old" value="'.$image_old.'">';
-    print '<input type="hidden" name="image_name" value="'.$image['name'].'">';
+    print '<input type="hidden" name="image_name" value="'.$uniqFileName.'">';
     print '<br />';
     print '<input type="button" onclick="history.back()" value="戻る">';
     print '<input type="submit" value="OK">';

@@ -45,7 +45,7 @@ if($isError){
 
 }else{
     // 入力チェックOKなら、hiddenでデータ入力して、user_add_done.phpに渡す
-    $password = md5($password);
+    $password = md5(SALT . $password);
     print '<form method="post" action="user_add_done.php">';
     print 'ユーザーID : '. $login_id . '<br />';
     print '<input type="hidden" name="login_id" value="'.$login_id.'">';

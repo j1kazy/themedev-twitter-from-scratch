@@ -1,6 +1,7 @@
 <?php
 
 define ("URL", (empty($_SERVER['HTTPS']) ? 'http://' : 'https://').$_SERVER['HTTP_HOST']);
+define ("SALT", "ezZundE1qnLZJ84s4SE2");
 
 function getDbh()
 {
@@ -66,10 +67,20 @@ function resizeImage($fileName)
 }
 
 // 指定したファイル名に接尾辞をつける
+// ファイル名のみ対応
 function addSuffix($fileName, $suffix)
 {
-    $pathData = pathinfo($fileName);
-    $newFileName = $pathData['dirname'] . '/' . $pathData['filename'] . $suffix . '.' . $pathData['extension'];
+    $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+    $newFileName = $pathData['filename'] . $suffix . '.' . $ext;
+    return $newFileName;
+}
+
+// 一意なファイル名を返す
+// ファイル名のみ対応
+function getUniqFileName($fileName)
+{
+    $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+    $newFileName = uniqid(rand()) . '.' . $ext;
     return $newFileName;
 }
 
@@ -87,3 +98,12 @@ function getDispImageTag($imagePath)
     return $disp_image;
 }
 
+
+
+// var_dump()を整形して使用
+function dump($value)
+{
+    print '<pre>';
+    var_dump($value);
+    print '</pre>';
+}
