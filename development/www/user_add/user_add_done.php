@@ -1,5 +1,9 @@
 <?php require_once(__DIR__ . '/../common/header.php') ?>
 
+<div class="header">
+    <h2>新規登録</h2>
+</div>
+
 <?php
 
 // TODO: このページで再読み込みすると、同じデータがDBに入ってしまう。

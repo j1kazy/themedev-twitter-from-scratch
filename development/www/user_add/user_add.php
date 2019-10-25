@@ -1,6 +1,9 @@
 <?php require_once(__DIR__ . '/../common/header.php') ?>
 
-新規登録<br />
+<div class="header">
+    <h2>新規登録</h2>
+</div>
+
 <br />
 <form method="post" action="user_add_check.php">
 ユーザーID<br />

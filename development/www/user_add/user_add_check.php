@@ -1,5 +1,9 @@
 <?php require_once(__DIR__ . '/../common/header.php') ?>
 
+<div class="header">
+    <h2>新規登録</h2>
+</div>
+
 <?php
 require_once(__DIR__ . '/../common/common.php');
 

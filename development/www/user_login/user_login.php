@@ -1,6 +1,8 @@
 <?php require_once(__DIR__ . '/../common/header.php') ?>
 
-ログイン<br />
+<div class="header">
+    <h2>ログイン</h2>
+</div>
 <br />
 <form method="post" action="user_login_check.php">
     ユーザーID<br />

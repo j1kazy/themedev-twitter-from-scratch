@@ -1,6 +1,10 @@
 <?php require_once(__DIR__ . '/../common/user_login_session.php'); ?>
 <?php require_once(__DIR__ . '/../common/header.php'); ?>
 
+<div class="header">
+    <h2>一覧</h2>
+</div>
+
 <?php 
 
 
