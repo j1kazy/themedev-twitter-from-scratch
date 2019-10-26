@@ -29,16 +29,16 @@ try{
 
     $dbh = null;
 
-    print $login_id;
-    print 'さんを追加しました。<br />';
+    echo $login_id;
+    echo 'さんを追加しました。<br />';
 
     // TODO: 追加したと同時にログインしたい
 
 }catch(Exception $e){
-    print 'ただいま障害により大変ご迷惑をおかけしております。';
-    print '<br /><br />';
-    print $e;
-    print '<br /><br />';
+    echo 'ただいま障害により大変ご迷惑をおかけしております。';
+    echo '<br /><br />';
+    echo $e;
+    echo '<br /><br />';
     var_dump($e);
     exit();
 }
@@ -46,6 +46,6 @@ try{
 ?>
 
 トップ？プロフィール画面へ
-<a href="<?php print URL . '/index.php' ?>">戻る</a>
+<a href="<?= URL . '/index.php' ?>">戻る</a>
 
 <?php require_once(__DIR__ . '/../common/footer.php') ?>

@@ -12,16 +12,16 @@ $disp_image = getDispImageTag($image_old);
 </div>
 <br />
 <form method="post" action="./profile_check.php" enctype="multipart/form-data">
-    <input type="hidden" name="image_old" value="<?php print $image_old; ?>">
+    <input type="hidden" name="image_old" value="<?= $image_old; ?>">
     名前<br />
-    <input type="text" name="name" value="<?php print $user['name']; ?>"><br />
+    <input type="text" name="name" value="<?= $user['name']; ?>"><br />
     <br />
-    <?php print $disp_image; ?>
+    <?= $disp_image; ?>
     <br />
     画像を選んでください<br />
     <input type="file" name="image" style="width:400px"><br />
     プロフィール<br />
-    <textarea name="profile"><?php print $user['profile']; ?></textarea><br />
+    <textarea name="profile"><?= $user['profile']; ?></textarea><br />
     
 
     <input type="button" onclick="history.back()" value="戻る">

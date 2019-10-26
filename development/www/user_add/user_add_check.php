@@ -20,7 +20,7 @@ $password = htmlspecialchars($_POST['pass'], ENT_QUOTES);
 // ユーザーIDが入っているか
 if(empty($login_id)){
     $isError = true;
-    print 'ユーザーIDを入力してください。<br />';
+    echo 'ユーザーIDを入力してください。<br />';
 }
 
 // TODO: ユーザーIDのルール。文字数・文字種
@@ -28,32 +28,32 @@ if(empty($login_id)){
 // パスワードが入っているか
 if(empty($password)){
     $isError = true;
-    print 'パスワードを入力してください。<br />';
+    echo 'パスワードを入力してください。<br />';
 }
 
 // ユーザーがすでにDBに存在している場合はtrue
 if($isError == false && isUserExitst($login_id)){
     $isError = true;
-    print 'すでに登録されているユーザーIDです。<br />';
+    echo 'すでに登録されているユーザーIDです。<br />';
 }
 
 // 入力チェックNGなら、戻るボタンのみ
 if($isError){
-    print '<form>';
-    print '<input type="button" onclick="history.back()" value="戻る">';
-    print '</fomr>';
+    echo '<form>
+    <input type="button" onclick="history.back()" value="戻る">
+    </fomr>';
 
 }else{
     // 入力チェックOKなら、hiddenでデータ入力して、user_add_done.phpに渡す
     $password = md5(SALT . $password);
-    print '<form method="post" action="user_add_done.php">';
-    print 'ユーザーID : '. $login_id . '<br />';
-    print '<input type="hidden" name="login_id" value="'.$login_id.'">';
-    print '<input type="hidden" name="pass" value="'.$password.'">';
-    print '<br />';
-    print '<input type="button" onclick="history.back()" value="戻る">';
-    print '<input type="submit" value="OK">';
-    print '</form>';
+    echo '<form method="post" action="user_add_done.php">
+    ユーザーID : '. $login_id . '<br />
+    <input type="hidden" name="login_id" value="'.$login_id.'">
+    <input type="hidden" name="pass" value="'.$password.'">
+    <br />
+    <input type="button" onclick="history.back()" value="戻る">
+    <input type="submit" value="OK">
+    </form>';
 }
 
 ?>

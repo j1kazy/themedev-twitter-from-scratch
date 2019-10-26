@@ -28,7 +28,7 @@ function isUserExitst($login_id)
         $count = $stmt->fetchColumn();
         $dbh = null;            
     }catch(Exception $e){
-        print 'ただいま障害により大変ご迷惑をおかけしております。';
+        echo 'ただいま障害により大変ご迷惑をおかけしております。';
         exit();
     }
     
@@ -49,7 +49,7 @@ function getUserData($login_id)
         $dbh = null;
         $rec = $stmt->fetch(PDO::FETCH_ASSOC);
     }catch(Exception $e){
-        print 'ただいま障害により大変ご迷惑をおかけしております。';
+        echo 'ただいま障害により大変ご迷惑をおかけしております。';
         exit();
     }
 
@@ -92,7 +92,7 @@ function getDispImageTag($imagePath)
     if($imagePath == ''){
         $disp_image = '';
     }else{
-        $disp_image = '<img src="./gazou/' . $imagePath . '">';
+        $disp_image = '<img src="./gazou/' . $imagePath . '"><br />';
     }
 
     return $disp_image;
@@ -103,7 +103,7 @@ function getDispImageTag($imagePath)
 // var_dump()を整形して使用
 function dump($value)
 {
-    print '<pre>';
+    echo '<pre>';
     var_dump($value);
-    print '</pre>';
+    echo '</pre>';
 }

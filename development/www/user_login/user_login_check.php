@@ -23,8 +23,8 @@ try{
     
     // 存在していなかったらエラーを吐いてログイン画面へ
     if($rec == false){
-        print 'ユーザーIDかパスワードが間違っています。<br />';
-        print '<a href="user_login.php">戻る</a>';
+        echo 'ユーザーIDかパスワードが間違っています。<br />';
+        echo '<a href="user_login.php">戻る</a>';
     }else{
         // 存在していたら情報をセッションに
         session_start();
@@ -37,7 +37,7 @@ try{
     }
     
 }catch(Exception $e){
-    print 'ただいま障害により大変ご迷惑をおかけしております。';
+    echo 'ただいま障害により大変ご迷惑をおかけしております。';
     exit();
 }
 

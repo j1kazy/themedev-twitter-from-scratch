@@ -31,14 +31,14 @@ try{
         }
     }
 
-    print '編集しました。<br />';
+    echo '編集しました。<br />';
 
 }
 catch (Exception $e){
-    print 'ただいま障害により大変ご迷惑をおかけしております。';
-    print '<br /><br />';
-    print $e;
-    print '<br /><br />';
+    echo 'ただいま障害により大変ご迷惑をおかけしております。';
+    echo '<br /><br />';
+    echo $e;
+    echo '<br /><br />';
     var_dump($e);
     exit();
 }
