@@ -1,8 +1,9 @@
-<?php require_once(__DIR__ . '/../common/header.php') ?>
+<?php 
+require_once(__DIR__ . '/../common/common.php');
 
-<div class="header">
-    <h2>新規登録</h2>
-</div>
+viewHeader('新規登録', false);
+?>
+
 
 <br />
 <form method="post" action="user_add_check.php">
@@ -18,4 +19,4 @@
 
 
 
-<?php require_once(__DIR__ . '/../common/footer.php') ?>
+<?php viewFooter(); ?>

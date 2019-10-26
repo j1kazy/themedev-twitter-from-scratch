@@ -1,16 +1,16 @@
-<?php require_once(__DIR__ . '/../common/user_login_session.php'); ?>
-<?php require_once(__DIR__ . '/../common/header.php'); ?>
+<?php 
+require_once(__DIR__ . '/../common/common.php');
 
-<?php
+loginCheck();
+viewHeader('プロフィール');
 
-require_once(__DIR__ . '/../common/header.php');
 
 try{
 
-    $name = htmlspecialchars($_POST['name']);
-    $profile = htmlspecialchars($_POST['profile']);
-    $image_old = htmlspecialchars($_POST['image_old']);
-    $image = htmlspecialchars($_POST['image_name']);
+    $name = htmlspecialchars($_POST['name'], ENT_QUOTES);
+    $profile = htmlspecialchars($_POST['profile'], ENT_QUOTES);
+    $image_old = htmlspecialchars($_POST['image_old'], ENT_QUOTES);
+    $image = htmlspecialchars($_POST['image_name'], ENT_QUOTES);
 
     $dbh  = getDbh();
 
@@ -31,14 +31,14 @@ try{
         }
     }
 
-    print '編集しました。<br />';
+    echo '編集しました。<br />';
 
 }
 catch (Exception $e){
-    print 'ただいま障害により大変ご迷惑をおかけしております。';
-    print '<br /><br />';
-    print $e;
-    print '<br /><br />';
+    echo 'ただいま障害により大変ご迷惑をおかけしております。';
+    echo '<br /><br />';
+    echo $e;
+    echo '<br /><br />';
     var_dump($e);
     exit();
 }
@@ -47,4 +47,4 @@ catch (Exception $e){
 
 <a href="profile.php">戻る</a>
 
-<?php require_once('../common/footer.php');?>
+<?php viewFooter();?>
