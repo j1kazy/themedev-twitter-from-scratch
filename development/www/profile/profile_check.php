@@ -5,9 +5,9 @@
 
 require_once(__DIR__ . '/../common/header.php');
 
-$name = htmlspecialchars($_POST['name']);
-$profile = htmlspecialchars($_POST['profile']);
-$image_old = htmlspecialchars($_POST['image_old']);
+$name = htmlspecialchars($_POST['name'], ENT_QUOTES);
+$profile = htmlspecialchars($_POST['profile'], ENT_QUOTES);
+$image_old = htmlspecialchars($_POST['image_old'], ENT_QUOTES);
 $image = $_FILES['image'];
 
 if($name == ''){

@@ -7,10 +7,10 @@ require_once(__DIR__ . '/../common/header.php');
 
 try{
 
-    $name = htmlspecialchars($_POST['name']);
-    $profile = htmlspecialchars($_POST['profile']);
-    $image_old = htmlspecialchars($_POST['image_old']);
-    $image = htmlspecialchars($_POST['image_name']);
+    $name = htmlspecialchars($_POST['name'], ENT_QUOTES);
+    $profile = htmlspecialchars($_POST['profile'], ENT_QUOTES);
+    $image_old = htmlspecialchars($_POST['image_old'], ENT_QUOTES);
+    $image = htmlspecialchars($_POST['image_name'], ENT_QUOTES);
 
     $dbh  = getDbh();
 

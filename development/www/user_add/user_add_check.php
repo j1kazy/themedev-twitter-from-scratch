@@ -10,8 +10,8 @@ require_once(__DIR__ . '/../common/common.php');
 $isError = false;
 
 // 入力値のサニタイズ
-$login_id = htmlspecialchars($_POST['login_id']);
-$password = htmlspecialchars($_POST['pass']);
+$login_id = htmlspecialchars($_POST['login_id'], ENT_QUOTES);
+$password = htmlspecialchars($_POST['pass'], ENT_QUOTES);
 
 
 // 入力値チェック
