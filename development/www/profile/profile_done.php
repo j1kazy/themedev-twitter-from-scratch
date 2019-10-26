@@ -1,9 +1,11 @@
-<?php require_once(__DIR__ . '/../common/user_login_session.php'); ?>
-<?php require_once(__DIR__ . '/../common/header.php'); ?>
+<?php 
+require_once(__DIR__ . '/../common/common.php');
 
-<?php
+loginCheck();
 
-require_once(__DIR__ . '/../common/header.php');
+// ヘッダーの表示
+viewHeader('プロフィール');
+
 
 try{
 
@@ -47,4 +49,4 @@ catch (Exception $e){
 
 <a href="profile.php">戻る</a>
 
-<?php require_once('../common/footer.php');?>
+<?php viewFooter();?>

@@ -1,13 +1,16 @@
-<?php require_once(__DIR__ . '/../common/user_login_session.php'); ?>
-<?php require_once(__DIR__ . '/../common/header.php'); ?>
+<?php 
+require_once(__DIR__ . '/../common/common.php');
 
-<?php
+loginCheck();
 
-require_once(__DIR__ . '/../common/header.php');
+// ヘッダーの表示
+viewHeader('プロフィール');
+
 
 $name = htmlspecialchars($_POST['name'], ENT_QUOTES);
 $profile = htmlspecialchars($_POST['profile'], ENT_QUOTES);
 $image_old = htmlspecialchars($_POST['image_old'], ENT_QUOTES);
+$uniqFileName = $image_old;
 $image = $_FILES['image'];
 
 if($name == ''){
@@ -52,6 +55,4 @@ if($name == "" || $image['size'] > 1000000){
     </form>';
 }
 
-?>
-
-<?php require_once('../common/footer.php');?>
+viewFooter();

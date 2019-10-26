@@ -1,10 +1,12 @@
-<?php require_once(__DIR__ . '/../common/user_login_session.php'); ?>
-<?php require_once(__DIR__ . '/../common/header.php'); ?>
+<?php 
+require_once(__DIR__ . '/../common/common.php');
 
-<div class="header">
-    <h2>プロフィール</h2>
-</div>
-<br />
+loginCheck();
+
+// ヘッダーの表示
+viewHeader('プロフィール');
+?>
+
 <form>
 <!-- TODO: history.backじゃなくURL指定でいいかも-->
 <input type="button" onclick="history.back()" value="戻る">
@@ -19,11 +21,9 @@
 $user = getUserData($_SESSION['login_id']);
 $disp_image = getDispImageTag($user['image']);
 
-print '名前：' . $user['name'] . '<br />';
-print '画像：'. $disp_image .'<br />';
-print 'プロフィール：' . $user['profile'] . '<br />';
+echo '名前：' . $user['name'] . '<br />
+画像：'. $disp_image .'<br />
+プロフィール：' . $user['profile'] . '<br />';
 
-?>
-
-
-<?php require_once(__DIR__ . '/../common/footer.php') ?>
+// フッターの表示
+viewFooter();

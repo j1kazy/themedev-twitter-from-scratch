@@ -1,7 +1,58 @@
 <?php
 
+require_once(__DIR__.'/loginCheck.php');
+
+// 定数群
 define ("URL", (empty($_SERVER['HTTPS']) ? 'http://' : 'https://').$_SERVER['HTTP_HOST']);
 define ("SALT", "ezZundE1qnLZJ84s4SE2");
+
+// ヘッダーの表示
+function viewHeader($title){
+
+    // ヘッダーの表示
+    echo '
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>わびさび | '.$title.'</title>
+    <link rel="stylesheet" href="'.URL.'/common/style.css" type="text/css">
+    </head>
+    <body>';
+
+    //ログインバー表示
+    viewLoginBar();
+
+    // ページタイトルの表示
+    echo '
+    <div class="header">
+    <h2>'.$title.'</h2>
+    </div>
+    <br />';
+    
+}
+
+// ログインバーの表示
+function viewLoginBar(){
+    
+    // ログインしてる？
+    if(isLogined()){
+        // ログインしていたらログアウトのバー
+        echo $_SESSION['name'] . 'さんログイン中
+        <a class="logout" href="'.URL.'/user_login/user_logout.php">ログアウト</a><br /><br />';
+    }else{
+        // ログインしてなかったらログインのバー
+        echo '<a class="login" href="'.URL.'/user_login/user_login.php">ログイン</a><br /><br />';
+    }    
+}
+
+// フッターの表示
+function viewFooter(){
+    echo '
+    </body>
+    </html>';
+}
+
 
 function getDbh()
 {
@@ -53,6 +104,26 @@ function getUserData($login_id)
         exit();
     }
 
+    return $rec;
+}
+
+// tweetsテーブルからidのデータを取得し配列で返す
+function getTweetData($tweet_id)
+{
+    try{
+        $dbh = getDbh();
+
+        $sql = 'SELECT * FROM tweets WHERE id=?';
+        $stmt = $dbh->prepare($sql);
+        $data[] = $tweet_id;
+        $stmt->execute($data);
+        
+        $dbh = null;
+        $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    }catch(Exception $e){
+        echo 'ただいま障害により大変ご迷惑をおかけしております。';
+        exit();
+    }
     return $rec;
 }
 

@@ -1,15 +1,16 @@
-<?php require_once(__DIR__ . '/../common/user_login_session.php'); ?>
-<?php require_once(__DIR__ . '/../common/header.php'); ?>
 <?php 
+require_once(__DIR__ . '/../common/common.php');
+
+loginCheck();
+
+// ヘッダーの表示
+viewHeader('プロフィール編集');
 
 $user = getUserData($_SESSION['login_id']);
 $image_old = $user['image'];
 $disp_image = getDispImageTag($image_old);
 ?>
 
-<div class="header">
-    <h2>プロフィール編集</h2>
-</div>
 <br />
 <form method="post" action="./profile_check.php" enctype="multipart/form-data">
     <input type="hidden" name="image_old" value="<?= $image_old; ?>">
@@ -29,4 +30,4 @@ $disp_image = getDispImageTag($image_old);
 </form>
 
 
-<?php require_once(__DIR__ . '/../common/footer.php') ?>
+<?php viewFooter(); ?>
