@@ -1,12 +1,10 @@
-<?php
-$_SESSION = array();
-if(isset($_COOKIE[session_name()]) == true){
-    setcookie(session_name(), '', time() - 42000, '/');
-}
-@session_destroy();
+<?php require_once(__DIR__.'/../common/LoginManager.php'); ?>
+<?php require_once(__DIR__.'/../common/common.php'); ?>
+<?php 
+LoginManager::Logout(); 
+viewHeader();
 ?>
 
-<?php require_once(__DIR__ . '/../common/header.php'); ?>
 
 ログアウトしました。<br />
 <br />

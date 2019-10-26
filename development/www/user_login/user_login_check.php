@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/../common/common.php');
+require_once(__DIR__ . '/../common/LoginManager.php');
 
 // サニタイズ
 $login_id = htmlspecialchars($_POST['login_id'], ENT_QUOTES);
@@ -27,10 +28,7 @@ try{
         print '<a href="user_login.php">戻る</a>';
     }else{
         // 存在していたら情報をセッションに
-        session_start();
-        $_SESSION['login'] = 1;
-        $_SESSION['login_id'] = $login_id;
-        $_SESSION['name'] = $rec['name'];
+        LoginManager::Login($login_id, $rec['name']);
 
         header('Location:../index.php');
         exit();
