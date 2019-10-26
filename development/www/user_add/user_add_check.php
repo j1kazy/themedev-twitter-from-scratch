@@ -1,20 +1,14 @@
-<?php require_once(__DIR__ . '/../common/header.php') ?>
-
-<div class="header">
-    <h2>新規登録</h2>
-</div>
-
 <?php
 require_once(__DIR__ . '/../common/common.php');
+
+viewHeader('新規登録', false);
+
 
 $isError = false;
 
 // 入力値のサニタイズ
 $login_id = htmlspecialchars($_POST['login_id'], ENT_QUOTES);
 $password = htmlspecialchars($_POST['pass'], ENT_QUOTES);
-
-
-// 入力値チェック
 
 
 // ユーザーIDが入っているか
@@ -59,4 +53,4 @@ if($isError){
 ?>
 
 
-<?php require_once(__DIR__ . '/../common/footer.php') ?>
+<?php viewFooter(); ?>

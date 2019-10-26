@@ -1,14 +1,10 @@
-<?php require_once(__DIR__ . '/../common/header.php') ?>
+<?php 
+require_once(__DIR__ . '/../common/common.php');
 
-<div class="header">
-    <h2>新規登録</h2>
-</div>
+viewHeader('新規登録', false);
 
-<?php
 
 // TODO: このページで再読み込みすると、同じデータがDBに入ってしまう。
-
-require_once(__DIR__ . '/../common/common.php');
 
 $login_id = htmlspecialchars($_POST['login_id'], ENT_QUOTES);
 $password = htmlspecialchars($_POST['pass'], ENT_QUOTES);
@@ -48,4 +44,4 @@ try{
 トップ？プロフィール画面へ
 <a href="<?= URL . '/index.php' ?>">戻る</a>
 
-<?php require_once(__DIR__ . '/../common/footer.php') ?>
+<?php viewFooter(); ?>

@@ -7,28 +7,40 @@ define ("URL", (empty($_SERVER['HTTPS']) ? 'http://' : 'https://').$_SERVER['HTT
 define ("SALT", "ezZundE1qnLZJ84s4SE2");
 
 // ヘッダーの表示
-function viewHeader($title){
+// タイトル省略可能
+// 第二引数 true:ログインバー表示、 false:ログインバー非表示　　デフォルトtrue
+function viewHeader($title = '', $viewLoginBar = true){
+
+    $titleTag = '';
+    if($title != '') {
+        $titleTag = '<title>わびさび | '.$title.'</title>';
+    }else{
+        $titleTag = '<title>わびさび</title>';
+    }
 
     // ヘッダーの表示
     echo '
     <!DOCTYPE html>
     <html>
     <head>
-    <meta charset="UTF-8">
-    <title>わびさび | '.$title.'</title>
-    <link rel="stylesheet" href="'.URL.'/common/style.css" type="text/css">
+    <meta charset="UTF-8">'
+    .$titleTag.
+    '<link rel="stylesheet" href="'.URL.'/common/style.css" type="text/css">
     </head>
     <body>';
 
     //ログインバー表示
-    viewLoginBar();
+    if($viewLoginBar)
+        viewLoginBar();
 
     // ページタイトルの表示
-    echo '
-    <div class="header">
-    <h2>'.$title.'</h2>
-    </div>
-    <br />';
+    if($title != ''){
+        echo '
+        <div class="header">
+        <h2>'.$title.'</h2>
+        </div>
+        <br />';
+    }
     
 }
 

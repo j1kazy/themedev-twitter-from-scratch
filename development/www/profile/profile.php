@@ -2,8 +2,6 @@
 require_once(__DIR__ . '/../common/common.php');
 
 loginCheck();
-
-// ヘッダーの表示
 viewHeader('プロフィール');
 ?>
 
