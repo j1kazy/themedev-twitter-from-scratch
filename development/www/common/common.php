@@ -6,6 +6,9 @@ require_once(__DIR__.'/loginCheck.php');
 define ("URL", (empty($_SERVER['HTTPS']) ? 'http://' : 'https://').$_SERVER['HTTP_HOST']);
 define ("SALT", "ezZundE1qnLZJ84s4SE2");
 
+// １ページに表示する件数
+define ("VIEW_RECORDS", 2);
+
 // ヘッダーの表示
 // タイトル省略可能
 // 第二引数 true:ログインバー表示、 false:ログインバー非表示　　デフォルトtrue
@@ -119,7 +122,56 @@ function getUserData($login_id)
     return $rec;
 }
 
-// tweetsテーブルからidのデータを取得し配列で返す
+// 全ツイート数取得
+function getTweetCount()
+{
+    $count = 0;
+    try{
+        $dbh = getDbh();
+
+        $sql = 'SELECT COUNT(*) FROM tweets WHERE 1';
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        $dbh = null;            
+    }catch(Exception $e){
+        echo 'ただいま障害により大変ご迷惑をおかけしております。';
+        exit();
+    }
+    
+    return $count;
+}
+
+
+// tweetsテーブルから全件のデータを配列で返す
+function getAllTweetDatasWithLimit($page)
+{
+    $tweets = Array();
+    try{
+
+        // つぶやき一覧の表示 １０件ずつ表示
+        $dbh = getDbh();
+    
+        $sql = 'SELECT * FROM tweets LIMIT ' . ($page - 1)*VIEW_RECORDS . ', ' . VIEW_RECORDS;
+        echo $sql;
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+
+        // $stmt->fetchAll(PDO::FETCH_ASSOC); と $stmtはforeachにおいて同義
+        $tweets = $stmt;
+        
+        $dbh = null;
+    
+        
+    }catch(Exception $e){
+        echo 'ただいま障害により大変ご迷惑をおかけしております。';
+        exit();
+    }
+    
+    return $tweets;
+}
+
+// tweetsテーブルからidのツイートを１件返す
 function getTweetData($tweet_id)
 {
     try{
@@ -138,6 +190,52 @@ function getTweetData($tweet_id)
     }
     return $rec;
 }
+
+// commentsテーブルからtweet_idのコメントを取得し配列で返す
+function getCommentDatas($tweet_id)
+{
+    $comments = Array();
+    try{
+        $dbh = getDbh();
+
+        $sql = 'SELECT * FROM comments WHERE tweet_id=?';
+        $stmt = $dbh->prepare($sql);
+        $data[] = $tweet_id;
+        $stmt->execute($data);
+        $comments = $stmt;
+        
+        $dbh = null;
+        $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    }catch(Exception $e){
+        echo 'ただいま障害により大変ご迷惑をおかけしております。';
+        exit();
+    }
+    return $comments;
+}
+
+// いいね数の取得
+function getLikesCount($tweet_id, $comment_id = 0){
+
+    $count = 0;
+    try{
+        $dbh = getDbh();
+
+        $sql = 'SELECT COUNT(*) FROM likes WHERE tweet_id=? and comment_id=?';
+        $stmt = $dbh->prepare($sql);
+        $data[] = $tweet_id;
+        $data[] = $comment_id;
+        $stmt->execute($data);
+        $count = $stmt->fetchColumn();
+        $dbh = null;            
+    }catch(Exception $e){
+        echo 'ただいま障害により大変ご迷惑をおかけしております。';
+        exit();
+    }
+    
+    return $count;
+
+}
+
 
 
 // 指定したパスのファイルをサムネイル化する（上書き保存） ImageMagic使用

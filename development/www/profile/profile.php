@@ -19,9 +19,11 @@ viewHeader('プロフィール');
 $user = getUserData($_SESSION['login_id']);
 $disp_image = getDispImageTag($user['image']);
 
-echo '名前：' . $user['name'] . '<br />
-画像：'. $disp_image .'<br />
-プロフィール：' . $user['profile'] . '<br />';
+echo <<< EOD
+名前： {$user['name']}<br />
+画像： {$disp_image}<br />
+プロフィール：{$user['profile']}<br />
+EOD;
 
 // フッターの表示
 viewFooter();

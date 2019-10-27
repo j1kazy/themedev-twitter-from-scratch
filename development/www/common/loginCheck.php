@@ -1,6 +1,13 @@
 <?php
 session_start();
-session_regenerate_id(true);
+// セッションハイジャック対策にsession_regenerate_id(true);　セッションIDの変更をしたいが
+// 毎回変更していると連続でアクセスするとセッションが破棄されてしまう問題が起きる。
+// 回避策として、7秒以内はセッションIDを書き換えないこととした。
+// $_SESSION['expires']はログイン時に最初に代入する
+if ($_SESSION['expires'] < time() - 7) {
+    session_regenerate_id(true);
+    $_SESSION['expires'] = time();
+}
 require_once(__DIR__ . '/common.php');
 
 // ログインしているか　trueでログイン済み
