@@ -31,6 +31,7 @@ try{
         $_SESSION['login'] = 1;
         $_SESSION['login_id'] = $login_id;
         $_SESSION['name'] = $rec['name'];
+        $_SESSION['expires'] = time();
 
         header('Location:../index.php');
         exit();
