@@ -16,16 +16,6 @@ foreach($tweets as $tweet){
 
 ?>
 
-<div class="tweet">
-    kami<br />
-    naka<br />
-    shimo<br />
-    <img src="aa.jpg">
-    <div class="iine">いいね</div>
-    <div class="comments">１０件</div>
-    <a href="test.php">詳細</a>
-</div>
-
 <form method="post" action="tweet_add.php">
     <input type="submit" value="つぶやく">
 </form>
@@ -33,18 +23,11 @@ foreach($tweets as $tweet){
 
 <?php
 // ページネーション
-$totalPage = $tweetCount / VIEW_RECORDS;
+$totalPage = ceil($tweetCount / VIEW_RECORDS);
 viewPagenation($page, $totalPage);
 
 viewFooter(); 
 ?>
-
-
-
-
-
-
-
 
 
 
@@ -71,6 +54,8 @@ echo <<< EOD
     <a href="./tweet_disp.php?id={$tweet['id']}">詳細</a>
     </div>
 EOD;
+
+// TODO:いいね機能
 }
 
 

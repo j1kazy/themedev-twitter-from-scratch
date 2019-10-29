@@ -7,7 +7,7 @@ define ("URL", (empty($_SERVER['HTTPS']) ? 'http://' : 'https://').$_SERVER['HTT
 define ("SALT", "ezZundE1qnLZJ84s4SE2");
 
 // １ページに表示する件数
-define ("VIEW_RECORDS", 2);
+define ("VIEW_RECORDS", 10);
 
 // ヘッダーの表示
 // タイトル省略可能
@@ -158,7 +158,7 @@ function getAllTweetDatasWithLimit($page)
         $stmt->execute($data);
 
         // $stmt->fetchAll(PDO::FETCH_ASSOC); と $stmtはforeachにおいて同義
-        $tweets = $stmt;
+        $tweets = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         $dbh = null;
     
@@ -202,10 +202,9 @@ function getCommentDatas($tweet_id)
         $stmt = $dbh->prepare($sql);
         $data[] = $tweet_id;
         $stmt->execute($data);
-        $comments = $stmt;
+        $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         $dbh = null;
-        $rec = $stmt->fetch(PDO::FETCH_ASSOC);
     }catch(Exception $e){
         echo 'ただいま障害により大変ご迷惑をおかけしております。';
         exit();
