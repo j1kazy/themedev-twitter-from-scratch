@@ -8,6 +8,13 @@ viewHeader('一覧');
 // ページング
 $page = isset($_GET['p']) ? htmlspecialchars($_GET['p'], ENT_QUOTES) : 1;
 $tweetCount = getTweetCount();
+$totalPage = ceil($tweetCount / VIEW_RECORDS);
+
+// ページのバリデーション。有効範囲に
+if($page < 1)
+    $page = 1;
+elseif($page >= $totalPage)
+    $page = $totalPage;
 
 $tweets = getAllTweetDatasWithLimit($page);
 foreach($tweets as $tweet){
@@ -23,9 +30,7 @@ foreach($tweets as $tweet){
 
 <?php
 // ページネーション
-$totalPage = ceil($tweetCount / VIEW_RECORDS);
 viewPagenation($page, $totalPage);
-
 viewFooter(); 
 ?>
 
