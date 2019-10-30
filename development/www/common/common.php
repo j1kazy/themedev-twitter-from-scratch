@@ -213,7 +213,11 @@ function getCommentDatas($tweet_id)
 }
 
 // いいね数の取得
-function getLikesCount($tweet_id, $comment_id = 0){
+function getLikesCount($tweet_id = 0, $comment_id = 0){
+
+    // tweet_id の場合はツイートに
+    // comment_id の場合はコメントに
+    // いいねがつく
 
     $count = 0;
     try{
@@ -278,6 +282,22 @@ function getDispImageTag($imagePath)
     return $disp_image;
 }
 
+
+// いいねを表示する
+function viewLikes($tweet_id = 0, $comment_id = 0)
+{
+    // tweet_id の場合はツイートに
+    // comment_id の場合はコメントに
+    // いいねがつく
+
+
+    $likeCount = getLikesCount($tweet_id, $comment_id);
+
+echo <<< EOD
+    <div class="iine">いいねボタン {$likeCount}</div>
+EOD;
+
+}
 
 
 // var_dump()を整形して使用
