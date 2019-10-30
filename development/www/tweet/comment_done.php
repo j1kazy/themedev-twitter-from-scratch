@@ -1,6 +1,4 @@
 <?php
-// TODO: DONEしたらtweet_dispに戻りたい
-
 require_once(__DIR__ . '/../common/common.php');
 loginCheck();
 
